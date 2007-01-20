@@ -237,10 +237,17 @@ class GoogleReader(object) :
                     stop_pos = result_edit.rfind("')")
                     uri_orig, feed = result_edit[start_pos+len("QuickAdd_success('"):stop_pos].split("','")
             else :
-                self.edit_subscription(feed=feed,action='subscribe')
+                result_edit = self.edit_subscription(feed=feed,action='subscribe')
             for label in labels :
                 print feed,CONST.ATOM_PREFIXE_LABEL+label
                 self.edit_subscription(feed=feed,add=CONST.ATOM_PREFIXE_LABEL+label.lower())
+        return result_edit
+
+    def del_subscription(self,feed,**kwargs) :
+        postargs = {}
+        result_edit = None
+        if feed is not None :
+            result_edit = self.edit_subscription(feed=feed,action='unsubscribe')
         return result_edit
 
 def test() :
