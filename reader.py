@@ -140,13 +140,13 @@ class GoogleReader(object) :
 
         feedurl = CONST.URI_PREFIXE_API + target_edit + '?' + urllib.urlencode(urlargs)
         result_edit = self._web.post(feedurl,postargs)
-        print "result_edit:[%s]"%result_edit
+        # print "result_edit:[%s]"%result_edit
         if result_edit != 'OK' :
             # just change the token and try one more time !
             kwargs['token'] = self.get_token(force=True)
             self._translate_args( dict_args, postargs, kwargs )
             result_edit = self._web.post(feedurl,postargs)
-            print "result_edit_bis:[%s]"%result_edit
+            # print "result_edit_bis:[%s]"%result_edit
         return result_edit
 
     # ---------------------------------------------------------------
@@ -231,7 +231,7 @@ class GoogleReader(object) :
                 kwargs['token'] = self.get_token(force=True)
                 self._translate_args( CONST.QUICKADD_ARGS, postargs, kwargs )
                 result_edit = self._web.post(CONST.URI_QUICKADD,postargs)
-                print "result_edit:[%s]"%result_edit
+                # print "result_edit:[%s]"%result_edit
                 if "QuickAdd_success('" in result_edit :
                     start_pos = result_edit.find("QuickAdd_success('")
                     stop_pos = result_edit.rfind("')")
@@ -239,7 +239,7 @@ class GoogleReader(object) :
             else :
                 result_edit = self.edit_subscription(feed=feed,action='subscribe')
             for label in labels :
-                print feed,CONST.ATOM_PREFIXE_LABEL+label
+                # print feed,CONST.ATOM_PREFIXE_LABEL+label
                 self.edit_subscription(feed=feed,add=CONST.ATOM_PREFIXE_LABEL+label.lower())
         return result_edit
 
