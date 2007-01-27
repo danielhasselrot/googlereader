@@ -15,6 +15,7 @@ from object import GoogleObject
 from const import CONST
 
 class GoogleReader(object) :
+    '''This class provide python binding for GoogleReader http://google.com/reader/'''
     def __init__(self,agent=None,http_proxy=None) :
         self._login = None
         self._passwd = None
@@ -69,6 +70,7 @@ class GoogleReader(object) :
     # ---------------------------------------------------------------
 
     def get_token(self,force=False) :
+        '''Return a tokey. A token is a special string that is used like a session identification, but that expire rather quickly.'''
         if ( force or (self._token == None) ) :
             feedurl = CONST.URI_PREFIXE_API + CONST.API_TOKEN + '?client=' + CONST.AGENT
             # print feedurl
