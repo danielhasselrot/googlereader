@@ -1,0 +1,22 @@
+from setuptools import setup, find_packages
+
+setup(name='googlereader',
+      version='0.1',
+      description='Fork of google reader api from pyrfeed',
+      author=['Tobias Hasselrot', 'Daniel Hasselrot',],
+      author_email='daniel.hasselrot@gmail.com',
+      url='',
+      download_url='http://github.com/danielhasselrot/googlereader/',
+      package_dir={'googlereader': 'googlereader'},
+      packages = find_packages(),
+      package_data={},
+      zip_safe=False,
+      classifiers=['Development Status :: 3 - Alpha',
+                   'Environment :: Web Environment',
+                   'Framework :: Django',
+                   'Intended Audience :: Developers',
+                   'License :: GPL 2.0',
+                   'Operating System :: OS Independent',
+                   'Programming Language :: Python',
+                   'Topic :: Utilities'],
+      )
