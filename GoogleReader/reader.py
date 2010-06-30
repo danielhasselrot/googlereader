@@ -35,6 +35,14 @@ class GoogleReader(object) :
         self._login = login
         self._passwd = passwd
 
+    def _extract_auth(self, sidinfo, id):
+        ID = '%s=' %id
+        if ID in sidinfo :
+            pos_beg = sidinfo.find(ID)
+            pos_end = sidinfo.find('\n',pos_beg)
+            return sidinfo[pos_beg+len(ID):pos_end]
+        return None
+
     def login(self) :
         ''' Login into GoogleReader. You must call identify before calling this.
             You must call this before anything else that acces to GoogleReader data.'''
@@ -53,16 +61,13 @@ class GoogleReader(object) :
         sidinfo = self._web.get( CONST.URI_LOGIN, data )
         # print sidinfo
 
-        self._sid = None
-        SID_ID = 'SID='
-        if SID_ID in sidinfo :
-            pos_beg = sidinfo.find(SID_ID)
-            pos_end = sidinfo.find('\n',pos_beg)
-            self._sid = sidinfo[pos_beg+len(SID_ID):pos_end]
-        if self._sid != None :
+        self._sid = self._extract_auth(sidinfo, "SID")
+        self._auth = self._extract_auth(sidinfo, "AUTH")
+
+        if self._sid and self._auth:
             cookie = cookielib.Cookie(version=0, name='SID', value=self._sid, port=None, port_specified=False, domain='.google.com', domain_specified=True, domain_initial_dot=True, path='/', path_specified=True, secure=False, expires='1600000000', discard=False, comment=None, comment_url=None, rest={})
             self._web.cookies().set_cookie(cookie)
-
+            self._web.auth = self._auth
             return True
 
     # ---------------------------------------------------------------
