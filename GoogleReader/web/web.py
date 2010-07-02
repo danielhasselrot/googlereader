@@ -87,12 +87,13 @@ class webUrllib2 :
         if postargs != None :
             postdata = urllib.urlencode(postargs, doseq=True)
     
-        if self.auth:
-            header = {'User-agent' : self.agent, 'Authorization': 'GoogleLogin? auth=' + self.Auth }
+    
+        if hasattr(self,"_auth"):
+            header = {'User-agent' : self._agent, 'Authorization': 'GoogleLogin auth=' + self._auth }
         else:
-            header = {'User-agent' : self.agent}
+            header = {'User-agent' : self._agent}
 
-        header = {'User-agent' : self._agent}
+
         if cookie :
             header['Cookie']=cookie
 
