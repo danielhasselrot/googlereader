@@ -234,6 +234,7 @@ class GoogleReader(object) :
         if (feed is not None) or (url is not None) :
             if feed is None :
                 kwargs['url'] = url
+                kwargs['action'] = 'subscribe'
                 kwargs['token'] = self.get_token(force=True)
                 self._translate_args( CONST.QUICKADD_ARGS, postargs, kwargs )
                 result_edit = self._web.post(CONST.URI_QUICKADD,postargs)
