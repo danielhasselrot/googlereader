@@ -6,7 +6,7 @@ For documentation about the unofficial Google Reader API you can read http://cod
 
 === Quick Start ===
 
-<code>
+<nowiki>
 import GoogleReader
 
 gr = GoogleReader.GoogleReader()
@@ -15,7 +15,7 @@ gr.identify(*l)
 
 #Example to subscribe to a new feed
 gr.add_subscription(url="https://gist.github.com/brutuscat.atom")
-</code>
+</nowiki>
 
 You can also modify and run the GoogleReader.test() method to see if everything is running smoothly.
 
