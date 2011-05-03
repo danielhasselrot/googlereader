@@ -16,7 +16,8 @@ Quick Start
     gr = GoogleReader.GoogleReader()
     l = ('mymail@google.com', 'mypassword')
     gr.identify(*l)
-
+    gr.login()
+    
     #Example to subscribe to a new feed
     gr.add_subscription(url="https://gist.github.com/brutuscat.atom")
 
