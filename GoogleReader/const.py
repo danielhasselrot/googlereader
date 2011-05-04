@@ -29,7 +29,7 @@ class CONST(object) :
     API_LIST_UNREAD_COUNT = 'unread-count'
     API_TOKEN = 'token'
 
-    URI_QUICKADD = URI_PREFIXE_READER + 'quickadd'
+    URI_QUICKADD = URI_PREFIXE_API + 'subscription/quickadd'
 
     OUTPUT_XML = 'xml'
     OUTPUT_JSON = 'json'
@@ -73,8 +73,9 @@ class CONST(object) :
         }
 
     QUICKADD_ARGS = {
-        'url' : 'quickadd',
         'token' : 'T',
+        'action' : 'ac',
+        'url' : 'quickadd'
     }
 
     ORDER_REVERSE = 'o'
